@@ -5,7 +5,14 @@
 
 // Write a macro that passes the quiz! No hints this time, you can do it!
 
-// I AM NOT DONE
+#[macro_use]
+mod macros {
+    macro_rules! my_macro {
+        ($val:expr) => {
+            format!("Hello {}", $val);
+        };
+    }
+}
 
 #[cfg(test)]
 mod tests {
@@ -13,11 +20,11 @@ mod tests {
 
     #[test]
     fn test_my_macro_world() {
-        assert_eq!(my_macro!("world!"), "Hello world!");
+        assert_eq!(my_macro! {"world!"}, "Hello world!");
     }
 
     #[test]
     fn test_my_macro_goodbye() {
-        assert_eq!(my_macro!("goodbye!"), "Hello goodbye!");
+        assert_eq!(my_macro! {"goodbye!"}, "Hello goodbye!");
     }
 }
